@@ -32,4 +32,9 @@ public class StringRepository implements IStringRespository {
     public String valueCannotBeEmpty() {
         return context.getString(R.string.valueCannotBeEmpty);
     }
+
+    @Override
+    public String getOutOfBoundsPlaceError() {
+        return context.getString(R.string.placeOutOfBounds);
+    }
 }

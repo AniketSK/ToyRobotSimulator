@@ -56,6 +56,8 @@ public final class BotMovementPresenter extends BasePresenter implements IBotMov
         boolean result = validatePlace(movementGrid, movementModel);
         if (result) {
             currentPositon = movementModel;
+        } else {
+            view.showReport(stringRespository.getOutOfBoundsPlaceError());
         }
         return result;
     }

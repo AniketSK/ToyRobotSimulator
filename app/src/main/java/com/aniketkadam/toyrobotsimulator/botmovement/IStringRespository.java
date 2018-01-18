@@ -12,4 +12,6 @@ public interface IStringRespository {
     String reportPosition(BotPositionModel botPositionModel);
 
     String valueCannotBeEmpty();
+
+    String getOutOfBoundsPlaceError();
 }

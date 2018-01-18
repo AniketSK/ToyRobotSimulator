@@ -14,4 +14,5 @@
     <string name="robotNotPlacedError">Please place the robot first</string>
     <string name="reportText">X: %1$d\nY: %2$d\nFacing:%3$s</string>
     <string name="valueCannotBeEmpty">Value cannot be empty</string>
+    <string name="placeOutOfBounds">Place out of bounds, cannot set</string>
 </resources>

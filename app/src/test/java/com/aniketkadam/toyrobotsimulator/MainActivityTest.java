@@ -33,7 +33,8 @@ public class MainActivityTest {
 
     @Mock
     IBotView view;
-    MovementGrid movementGrid = new MovementGrid(0, 0, 5, 5);
+    private final int lowerBoundX = 0;
+    MovementGrid movementGrid = new MovementGrid(lowerBoundX, 0, 5, 5);
     @Mock
     IStringRespository stringRespository;
     BotMovementPresenter botMovementPresenter;
@@ -121,5 +122,23 @@ public class MainActivityTest {
         verify(view, never()).showXTextError(anyString());
         verify(view, never()).showYTextError(anyString());
     }
+
+    @Test
+    public void place_showErrorIfOutOfBounds() throws Exception{
+        when(view.getXPosition()).thenReturn(String.valueOf(lowerBoundX - 1));
+        when(view.getYPosition()).thenReturn("2");
+        when(view.getSelectedDirection()).thenReturn(BotDirection.EAST);
+        String outOfBoundsError = "error";
+        when(stringRespository.getOutOfBoundsPlaceError()).thenReturn(outOfBoundsError);
+
+        botMovementPresenter = new BotMovementPresenter(movementGrid, view, stringRespository);
+        botMovementPresenter.placeClicked();
+
+        verify(view, never()).showXTextError(anyString());
+        verify(view, never()).showYTextError(anyString());
+
+        verify(view).showReport(outOfBoundsError);
+    }
+
 
 }
