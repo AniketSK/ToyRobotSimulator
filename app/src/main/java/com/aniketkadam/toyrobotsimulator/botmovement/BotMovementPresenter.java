@@ -1,12 +1,20 @@
 package com.aniketkadam.toyrobotsimulator.botmovement;
 
 import com.aniketkadam.toyrobotsimulator.botposition.BotPositionModel;
+import com.aniketkadam.toyrobotsimulator.movementgrid.MovementGrid;
 
 /**
  * Handles movement for the bot.
  */
 
-public class BotMovementPresenter implements IBotMovement {
+public final class BotMovementPresenter implements IBotMovement {
+
+    private final MovementGrid movementGrid;
+
+    public BotMovementPresenter(MovementGrid movementGrid) {
+
+        this.movementGrid = movementGrid;
+    }
 
     @Override
     public boolean place(BotPositionModel movementModel) {
