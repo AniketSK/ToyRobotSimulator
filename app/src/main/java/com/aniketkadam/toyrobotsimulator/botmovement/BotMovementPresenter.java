@@ -44,12 +44,12 @@ public final class BotMovementPresenter implements IBotMovement {
     }
 
     @Override
-    public boolean moveLeft() {
+    public boolean turnLeft() {
         return false;
     }
 
     @Override
-    public boolean moveRight() {
+    public boolean turnRight() {
         return false;
     }
 

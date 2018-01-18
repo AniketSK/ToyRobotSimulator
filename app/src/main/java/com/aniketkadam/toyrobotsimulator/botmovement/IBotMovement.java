@@ -9,8 +9,8 @@ import com.aniketkadam.toyrobotsimulator.botposition.BotPositionModel;
 public interface IBotMovement {
     boolean place(BotPositionModel movementModel);
     boolean moveForward();
-    boolean moveLeft();
-    boolean moveRight();
+    boolean turnLeft();
+    boolean turnRight();
 
     /**
      * Returns the current position of the bot if it is placed, or null otherwise. Such as at
