@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import static org.junit.Assert.assertEquals;
 
@@ -24,6 +25,7 @@ public class BotMovementPresenterTest {
 
     @Before
     public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
         movementGrid = new MovementGrid(0, 0, 5, 5);
         botMovementPresenter = new BotMovementPresenter(movementGrid, view, stringRespository);
     }
