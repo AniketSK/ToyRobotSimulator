@@ -3,6 +3,7 @@ package com.aniketkadam.toyrobotsimulator.botmovement;
 import android.support.annotation.NonNull;
 import android.support.annotation.RestrictTo;
 
+import com.aniketkadam.toyrobotsimulator.base.BasePresenter;
 import com.aniketkadam.toyrobotsimulator.botposition.BotDirection;
 import com.aniketkadam.toyrobotsimulator.botposition.BotPositionModel;
 import com.aniketkadam.toyrobotsimulator.botposition.TurningDirection;
@@ -14,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
  * Handles movement for the bot.
  */
 
-public final class BotMovementPresenter implements IBotMovement {
+public final class BotMovementPresenter extends BasePresenter implements IBotMovement {
 
     private final MovementGrid movementGrid;
     private BotPositionModel currentPositon;
