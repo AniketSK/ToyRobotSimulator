@@ -3,6 +3,8 @@ package com.aniketkadam.toyrobotsimulator.botmovement;
 import com.aniketkadam.toyrobotsimulator.botposition.BotPositionModel;
 import com.aniketkadam.toyrobotsimulator.movementgrid.MovementGrid;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Handles movement for the bot.
  */
@@ -12,13 +14,13 @@ public final class BotMovementPresenter implements IBotMovement {
     private final MovementGrid movementGrid;
     private BotPositionModel currentPositon;
 
-    public BotMovementPresenter(MovementGrid movementGrid) {
+    public BotMovementPresenter(@NotNull MovementGrid movementGrid) {
 
         this.movementGrid = movementGrid;
     }
 
     @Override
-    public boolean place(BotPositionModel movementModel) {
+    public boolean place(@NotNull BotPositionModel movementModel) {
         boolean result = validatePlace(movementGrid, movementModel);
         if (result) {
             currentPositon = movementModel;
