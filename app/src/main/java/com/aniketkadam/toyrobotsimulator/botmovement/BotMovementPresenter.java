@@ -28,9 +28,30 @@ public final class BotMovementPresenter extends BasePresenter implements IBotMov
         this.stringRespository = stringRespository;
     }
 
+    @Override
+    public void report() {
+        BotPositionModel position = reportPosition();
+        if ( position == null ) {
+            view.showReport(stringRespository.reportError());
+        } else {
+            view.showReport(stringRespository.reportPosition(position));
+        }
     }
 
     @Override
+    public void placeClicked() {
+        String x = view.getXPosition();
+        String y = view.getYPosition();
+        BotDirection direction = view.getSelectedDirection();
+        if ( x.isEmpty() ) {
+            view.showXTextError(stringRespository.valueCannotBeEmpty());
+        } else if ( y.isEmpty() ) {
+            view.showYTextError(stringRespository.valueCannotBeEmpty());
+        } else {
+            place(new BotPositionModel(Integer.valueOf(x), Integer.valueOf(y), direction));
+        }
+    }
+
     public boolean place(@NotNull BotPositionModel movementModel) {
         boolean result = validatePlace(movementGrid, movementModel);
         if (result) {

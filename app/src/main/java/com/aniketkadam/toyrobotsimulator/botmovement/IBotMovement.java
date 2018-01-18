@@ -8,9 +8,10 @@ import com.aniketkadam.toyrobotsimulator.botposition.TurningDirection;
  */
 
 public interface IBotMovement {
-    boolean place(BotPositionModel movementModel);
+    void placeClicked();
     boolean moveForward();
     void turnToDirection(TurningDirection turningDirection);
+    void report();
 
     /**
      * Returns the current position of the bot if it is placed, or null otherwise. Such as at
