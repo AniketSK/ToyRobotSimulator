@@ -18,7 +18,7 @@ public final class BotMovementPresenter implements IBotMovement {
 
     @Override
     public boolean place(BotPositionModel movementModel) {
-        return false;
+        return validatePlace(movementGrid, movementModel);
     }
 
     @Override
@@ -39,5 +39,22 @@ public final class BotMovementPresenter implements IBotMovement {
     @Override
     public BotPositionModel reportPosition() {
         return null;
+    }
+
+    /**
+     * Validates a placement of the bot, on any part of the board.
+     * @param moveGrid the grid which the bot is going to be placed on.
+     * @param position the position to which it should be moved.
+     * @return true if the position is valid, false otherwise.
+     */
+    private boolean validatePlace(MovementGrid moveGrid, BotPositionModel position) {
+        if (position.getX() < moveGrid.getLbX() ||
+                position.getX() > moveGrid.getUbX() ||
+                position.getY() < moveGrid.getLbY() ||
+                position.getY() > moveGrid.getUbY()) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
