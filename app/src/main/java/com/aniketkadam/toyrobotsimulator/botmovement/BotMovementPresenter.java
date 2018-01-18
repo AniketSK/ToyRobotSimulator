@@ -20,10 +20,12 @@ public final class BotMovementPresenter extends BasePresenter implements IBotMov
     private final MovementGrid movementGrid;
     private final IBotView view;
     private BotPositionModel currentPositon;
+    private final IStringRespository stringRespository;
 
-    public BotMovementPresenter(@NotNull MovementGrid movementGrid, IBotView view) {
+    public BotMovementPresenter(@NotNull MovementGrid movementGrid, IBotView view, IStringRespository stringRespository) {
         this.movementGrid = movementGrid;
         this.view = view;
+        this.stringRespository = stringRespository;
     }
 
     }

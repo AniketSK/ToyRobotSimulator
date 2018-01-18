@@ -1,14 +1,13 @@
 package com.aniketkadam.toyrobotsimulator;
 
 import android.os.Bundle;
-import android.support.annotation.IntegerRes;
 import android.widget.Toast;
 
 import com.aniketkadam.toyrobotsimulator.base.BaseActivity;
 import com.aniketkadam.toyrobotsimulator.botmovement.BotMovementPresenter;
 import com.aniketkadam.toyrobotsimulator.botmovement.IBotView;
+import com.aniketkadam.toyrobotsimulator.botmovement.StringRepository;
 import com.aniketkadam.toyrobotsimulator.botposition.BotDirection;
-import com.aniketkadam.toyrobotsimulator.botposition.BotPositionModel;
 import com.aniketkadam.toyrobotsimulator.databinding.ActivityMainBinding;
 import com.aniketkadam.toyrobotsimulator.movementgrid.MovementGrid;
 
@@ -32,7 +31,7 @@ public class MainActivity extends BaseActivity<BotMovementPresenter, ActivityMai
 
     @Override
     public BotMovementPresenter getPresenter() {
-        return new BotMovementPresenter(new MovementGrid(lowerBoundX, getLowerBoundY, upperBoundX, upperBoundY), this);
+        return new BotMovementPresenter(new MovementGrid(lowerBoundX, getLowerBoundY, upperBoundX, upperBoundY), this, new StringRepository(this));
     }
 
     @Override
