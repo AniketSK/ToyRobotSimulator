@@ -27,7 +27,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
- * Created by nicky on 18/1/18.
+ * Testing interactions between the view and the presenter.
  */
 public class MainActivityTest {
 
