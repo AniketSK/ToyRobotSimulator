@@ -11,5 +11,11 @@ public interface IBotMovement {
     boolean moveForward();
     boolean moveLeft();
     boolean moveRight();
+
+    /**
+     * Returns the current position of the bot if it is placed, or null otherwise. Such as at
+     * the beginning of the game where no position is decided.
+     * @return A position if the bot is placed, null otherwise.
+     */
     BotPositionModel reportPosition();
 }
