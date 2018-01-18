@@ -68,8 +68,18 @@ public class BotMovementPresenterTest {
     }
 
     @Test
-    public void moveForward_worksForSouth() throws Exception {
+    public void moveForward_stopsForNorthInValidPositions() throws Exception {
+        checkPositions(0, 0, 0, 0, BotDirection.SOUTH);
+    }
+
+    @Test
+    public void moveForward_worksForSouthValidPositions() throws Exception {
         checkPositions(0, 1, 0, 0, BotDirection.SOUTH);
+    }
+
+    @Test
+    public void moveForward_stopsForSouthInvalidPositions() throws Exception {
+        checkPositions(0, 0, 0, 0, BotDirection.SOUTH);
     }
 
     @Test
@@ -78,8 +88,18 @@ public class BotMovementPresenterTest {
     }
 
     @Test
+    public void moveForward_stopsForEastInvalidPositions() throws Exception {
+        checkPositions(movementGrid.getUbX(), 0, movementGrid.getUbX(), 0, BotDirection.EAST);
+    }
+
+    @Test
     public void moveForward_worksForWestValidPositions() throws Exception {
         checkPositions(1, 0, 0, 0, BotDirection.WEST);
+    }
+
+    @Test
+    public void moveForward_stopsForWestInvalidPositions() throws Exception {
+        checkPositions(0, 0, 0, 0, BotDirection.WEST);
     }
 
     private void checkPositions(int initialX, int initialY, int expectedX, int expectedY, BotDirection initalDirection) {
