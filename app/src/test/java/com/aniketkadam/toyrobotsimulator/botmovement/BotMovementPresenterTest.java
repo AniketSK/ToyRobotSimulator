@@ -136,10 +136,6 @@ public class BotMovementPresenterTest {
     }
 
     @Test
-    public void reportPosition() throws Exception {
-    }
-
-    @Test
     public void reportPosition_returnsNullIfBotNotPlaced() throws Exception {
         BotPositionModel report = botMovementPresenter.reportPosition();
         assertEquals("Position reported when none was present", null, report);
@@ -172,5 +168,22 @@ public class BotMovementPresenterTest {
         assertEquals("Invalid position was reported", validPosition, botMovementPresenter.reportPosition());
     }
 
+    @Test
+    public void reportPosition_worksAfterLeftTurn() throws Exception {
+        BotPositionModel positionModel = new BotPositionModel( movementGrid.getLbX(), movementGrid.getUbY(), BotDirection.NORTH);
+        botMovementPresenter.place(positionModel);
+        botMovementPresenter.turnToDirection(TurningDirection.LEFT);
+        BotPositionModel expectedPosition = new BotPositionModel( movementGrid.getLbX(), movementGrid.getUbY(), BotDirection.WEST);
+        assertEquals("Report did not acknowledge a left turn from north to west", expectedPosition, botMovementPresenter.reportPosition());
+    }
+
+    @Test
+    public void reportPosition_worksAfterRightTurn() throws Exception {
+        BotPositionModel positionModel = new BotPositionModel( movementGrid.getLbX(), movementGrid.getUbY(), BotDirection.WEST);
+        botMovementPresenter.place(positionModel);
+        botMovementPresenter.turnToDirection(TurningDirection.RIGHT);
+        BotPositionModel expectedPosition = new BotPositionModel( movementGrid.getLbX(), movementGrid.getUbY(), BotDirection.NORTH);
+        assertEquals("Report did not acknowledge a left turn from north to west", expectedPosition, botMovementPresenter.reportPosition());
+    }
 
 }
