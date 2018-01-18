@@ -110,7 +110,20 @@ public class BotMovementPresenterTest {
     }
 
     @Test
-    public void moveLeft() throws Exception {
+    public void turnLeft_worksWith360DegreesMovement() throws Exception {
+        checkLeftTurn(BotDirection.NORTH, BotDirection.WEST);
+        checkLeftTurn(BotDirection.WEST, BotDirection.SOUTH);
+        checkLeftTurn(BotDirection.SOUTH, BotDirection.EAST);
+        checkLeftTurn(BotDirection.EAST, BotDirection.NORTH);
+    }
+
+    void checkLeftTurn(BotDirection initialDirection, BotDirection expectedDirection) {
+        BotPositionModel initial = new BotPositionModel(0,0, initialDirection);
+        botMovementPresenter.place(initial);
+        botMovementPresenter.turnLeft();
+        BotPositionModel expected = new BotPositionModel(0,0,expectedDirection);
+        assertEquals("Bot did not turn left", expected, botMovementPresenter.getCurrentPosition());
+
     }
 
     @Test
