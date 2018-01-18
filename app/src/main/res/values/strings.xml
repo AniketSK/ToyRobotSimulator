@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Toy Robot Simulator</string>
+    <string name="place_label">Place:</string>
+    <string name="textViewXHint">x</string>
+    <string name="textViewYHint">y</string>
+    <string name="buttonMove">Move</string>
+    <string name="buttonLeft">Left</string>
+    <string name="buttonRight">Right</string>
+    <string name="buttonReport">Report</string>
+    <string name="radioButtonNorth">North</string>
+    <string name="radioButtonSouth">South</string>
+    <string name="radioButtonEast">East</string>
+    <string name="radioButtonWest">West</string>
 </resources>

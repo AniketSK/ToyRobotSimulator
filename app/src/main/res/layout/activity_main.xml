@@ -6,13 +6,120 @@
     android:layout_height="match_parent"
     tools:context="com.aniketkadam.toyrobotsimulator.MainActivity">
 
-    <TextView
+
+    <Button
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="23dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="39dp"
+        android:text="@string/place_label"
+        app:layout_constraintEnd_toStartOf="@+id/textViewX"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/textViewX"
+        android:layout_width="73dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="4dp"
+        android:ems="10"
+        android:hint="@string/textViewXHint"
+        android:inputType="number"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewY"
+        app:layout_constraintEnd_toStartOf="@+id/textViewY"
+        app:layout_constraintStart_toEndOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/textViewY"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="107dp"
+        android:ems="10"
+        android:hint="@string/textViewYHint"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewX"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/buttonMove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/buttonMove"
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonReport"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/buttonLeft"
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonRight"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="97dp"
+        android:layout_marginStart="23dp"
+        android:text="@string/buttonRight"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonLeft" />
+
+    <Button
+        android:id="@+id/buttonReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="@string/buttonReport"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRight"
+        app:layout_constraintStart_toStartOf="@+id/buttonRight" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textViewX"
+        app:layout_constraintLeft_toLeftOf="@id/textViewX"
+        tools:layout_editor_absoluteY="101dp">
+
+        <RadioButton
+            android:id="@+id/radioButtonNorth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/radioButtonNorth"
+            app:layout_constraintStart_toStartOf="@+id/textViewX"
+            app:layout_constraintTop_toBottomOf="@+id/textViewX" />
+
+        <RadioButton
+            android:id="@+id/radioButtonSouth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/radioButtonSouth"
+            app:layout_constraintStart_toStartOf="@+id/radioButtonNorth"
+            app:layout_constraintTop_toBottomOf="@+id/radioButtonNorth" />
+
+        <RadioButton
+            android:id="@+id/radioButtonEast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radioButtonEast"
+            app:layout_constraintStart_toStartOf="@+id/radioButtonSouth"
+            app:layout_constraintTop_toBottomOf="@+id/radioButtonSouth" />
+
+        <RadioButton
+            android:id="@+id/radioButtonWest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radioButtonWest"
+            app:layout_constraintStart_toStartOf="@+id/radioButtonEast"
+            app:layout_constraintTop_toBottomOf="@+id/radioButtonEast" />
+    </RadioGroup>
 </android.support.constraint.ConstraintLayout>
