@@ -1,17 +1,15 @@
 package com.aniketkadam.toyrobotsimulator;
 
-import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import com.aniketkadam.toyrobotsimulator.base.BaseActivity;
 import com.aniketkadam.toyrobotsimulator.botmovement.BotMovementPresenter;
 import com.aniketkadam.toyrobotsimulator.botmovement.IBotView;
+import com.aniketkadam.toyrobotsimulator.databinding.ActivityMainBinding;
 import com.aniketkadam.toyrobotsimulator.movementgrid.MovementGrid;
 
-public class MainActivity extends BaseActivity<BotMovementPresenter, ViewDataBinding> implements IBotView {
+public class MainActivity extends BaseActivity<BotMovementPresenter, ActivityMainBinding> implements IBotView {
 
     private final int lowerBoundX = 0;
     private final int getLowerBoundY = 0;
