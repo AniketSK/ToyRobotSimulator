@@ -46,10 +46,9 @@ public final class BotMovementPresenter implements IBotMovement {
     }
 
     @Override
-    public boolean turnLeft() {
+    public void turnLeft() {
         BotDirection newDirection = getNewPostion(currentPositon.getFacing(), TurningDirection.LEFT);
         currentPositon.setFacing(newDirection);
-        return true;
     }
 
     private @NonNull BotDirection getNewPostion(@NonNull BotDirection facing, @NonNull TurningDirection directionToTurn) {
@@ -74,8 +73,8 @@ public final class BotMovementPresenter implements IBotMovement {
     }
 
     @Override
-    public boolean turnRight() {
-        return false;
+    public void turnRight() {
+        
     }
 
     @Override
