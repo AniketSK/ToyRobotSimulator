@@ -15,9 +15,8 @@ import static org.junit.Assert.*;
  */
 public class BotMovementPresenterTest {
 
-    BotPositionModel model;
-    BotMovementPresenter botMovementPresenter;
-    MovementGrid movementGrid;
+    private BotMovementPresenter botMovementPresenter;
+    private MovementGrid movementGrid;
 
     @Before
     public void setUp() throws Exception {
@@ -52,7 +51,6 @@ public class BotMovementPresenterTest {
         boolean moveSuccessful = botMovementPresenter.place(new BotPositionModel(movementGrid.getLbX() - 1, movementGrid.getLbY(), BotDirection.NORTH));
         assertEquals("Place succeeded when it shouldn't have", false, moveSuccessful);
     }
-
 
     @Test
     public void place_allInGridPositonsAreValid() throws Exception {
@@ -115,7 +113,7 @@ public class BotMovementPresenterTest {
         for (int y = movementGrid.getLbY(); y <= movementGrid.getUbY(); y++) {
             for (int x = movementGrid.getLbX(); x <= movementGrid.getUbX(); x++) {
                 positionModel = new BotPositionModel(x, y, BotDirection.NORTH);
-                boolean moveSuccessful = botMovementPresenter.place(positionModel);
+                botMovementPresenter.place(positionModel);
                 BotPositionModel reportedPosition = botMovementPresenter.reportPosition();
                 assertEquals(String.format("Actual position x:%d and y:%d , reported position:x: %s, y: %s",
                         x,
@@ -135,5 +133,6 @@ public class BotMovementPresenterTest {
         botMovementPresenter.place(illegalPosition);
         assertEquals("Invalid position was reported", validPosition, botMovementPresenter.reportPosition());
     }
+
 
 }
