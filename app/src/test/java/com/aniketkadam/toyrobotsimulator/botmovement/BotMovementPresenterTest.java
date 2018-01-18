@@ -80,4 +80,28 @@ public class BotMovementPresenterTest {
     public void reportPosition() throws Exception {
     }
 
+    @Test
+    public void reportPosition_returnsNullIfBotNotPlaced() throws Exception {
+        BotPositionModel report = botMovementPresenter.reportPosition();
+        assertEquals("Position reported when none was present", null, report);
+    }
+
+    @Test
+    public void reportPosition_returnsAccuratelyOnAllValidPlacedPositions() throws Exception {
+        BotPositionModel positionModel;
+        for (int y = movementGrid.getLbY(); y <= movementGrid.getUbY(); y++) {
+            for (int x = movementGrid.getLbX(); x <= movementGrid.getUbX(); x++) {
+                positionModel = new BotPositionModel(x, y, BotDirection.NORTH);
+                boolean moveSuccessful = botMovementPresenter.place(positionModel);
+                BotPositionModel reportedPosition = botMovementPresenter.reportPosition();
+                assertEquals(String.format("Actual position x:%d and y:%d , reported position:x: %s, y: %s",
+                        x,
+                        y,
+                        reportedPosition == null ? "Position was null" : reportedPosition.getX(),
+                        reportedPosition == null ? "Position was null" : reportedPosition.getY()),
+                        positionModel, reportedPosition);
+            }
+        }
+    }
+
 }
