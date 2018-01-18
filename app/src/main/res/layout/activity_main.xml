@@ -26,7 +26,7 @@
 
         <EditText
             android:id="@+id/textViewX"
-            android:layout_width="73dp"
+            android:layout_width="50dp"
             android:layout_height="46dp"
             android:layout_marginEnd="4dp"
             android:ems="10"
@@ -38,9 +38,8 @@
 
         <EditText
             android:id="@+id/textViewY"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="107dp"
+            android:layout_width="66dp"
+            android:layout_height="49dp"
             android:ems="10"
             android:hint="@string/textViewYHint"
             android:inputType="number"
