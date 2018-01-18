@@ -15,4 +15,8 @@ public interface IBotView extends BaseView {
     String getXPosition();
 
     String getYPosition();
+
+    void showXTextError(String error);
+
+    void showYTextError(String error);
 }

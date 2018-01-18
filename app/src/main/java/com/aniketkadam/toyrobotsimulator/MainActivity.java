@@ -77,4 +77,13 @@ public class MainActivity extends BaseActivity<BotMovementPresenter, ActivityMai
         return binding.textViewY.getText().toString();
     }
 
+    @Override
+    public void showXTextError(String error) {
+        binding.textViewX.setError(error);
+    }
+
+    @Override
+    public void showYTextError(String error) {
+        binding.textViewY.setError(error);
+    }
 }
