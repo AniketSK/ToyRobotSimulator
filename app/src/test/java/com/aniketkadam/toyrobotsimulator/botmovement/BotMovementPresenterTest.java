@@ -21,7 +21,7 @@ public class BotMovementPresenterTest {
 
     @Before
     public void setUp() throws Exception {
-        movementGrid = new MovementGrid(0,0,5,5);
+        movementGrid = new MovementGrid(0, 0, 5, 5);
         botMovementPresenter = new BotMovementPresenter(movementGrid);
     }
 
@@ -56,8 +56,8 @@ public class BotMovementPresenterTest {
 
     @Test
     public void place_allInGridPositonsAreValid() throws Exception {
-        for ( int y = movementGrid.getLbY(); y <= movementGrid.getUbY(); y++ ) {
-            for( int x = movementGrid.getLbX(); x <= movementGrid.getUbX(); x++ ) {
+        for (int y = movementGrid.getLbY(); y <= movementGrid.getUbY(); y++) {
+            for (int x = movementGrid.getLbX(); x <= movementGrid.getUbX(); x++) {
                 boolean moveSuccessful = botMovementPresenter.place(new BotPositionModel(x, y, BotDirection.NORTH));
                 assertEquals(String.format("Place failed when it shouldn't have at x:%d and y:%d", x, y), true, moveSuccessful);
             }
