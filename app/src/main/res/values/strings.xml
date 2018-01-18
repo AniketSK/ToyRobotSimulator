@@ -11,4 +11,7 @@
     <string name="radioButtonSouth">South</string>
     <string name="radioButtonEast">East</string>
     <string name="radioButtonWest">West</string>
+    <string name="robotNotPlacedError">Please place the robot first</string>
+    <string name="reportText">X: %1$d\nY: %2$d\nFacing:%3$s</string>
+    <string name="valueCannotBeEmpty">Value cannot be empty</string>
 </resources>
