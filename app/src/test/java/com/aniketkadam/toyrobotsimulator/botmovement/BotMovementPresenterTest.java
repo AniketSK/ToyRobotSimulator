@@ -2,6 +2,7 @@ package com.aniketkadam.toyrobotsimulator.botmovement;
 
 import com.aniketkadam.toyrobotsimulator.botposition.BotDirection;
 import com.aniketkadam.toyrobotsimulator.botposition.BotPositionModel;
+import com.aniketkadam.toyrobotsimulator.botposition.TurningDirection;
 import com.aniketkadam.toyrobotsimulator.movementgrid.MovementGrid;
 
 import org.junit.After;
@@ -111,23 +112,27 @@ public class BotMovementPresenterTest {
 
     @Test
     public void turnLeft_worksWith360DegreesMovement() throws Exception {
-        checkLeftTurn(BotDirection.NORTH, BotDirection.WEST);
-        checkLeftTurn(BotDirection.WEST, BotDirection.SOUTH);
-        checkLeftTurn(BotDirection.SOUTH, BotDirection.EAST);
-        checkLeftTurn(BotDirection.EAST, BotDirection.NORTH);
-    }
-
-    void checkLeftTurn(BotDirection initialDirection, BotDirection expectedDirection) {
-        BotPositionModel initial = new BotPositionModel(0,0, initialDirection);
-        botMovementPresenter.place(initial);
-        botMovementPresenter.turnLeft();
-        BotPositionModel expected = new BotPositionModel(0,0,expectedDirection);
-        assertEquals("Bot did not turn left", expected, botMovementPresenter.getCurrentPosition());
-
+        checkTurn(BotDirection.NORTH, BotDirection.WEST, TurningDirection.LEFT);
+        checkTurn(BotDirection.WEST, BotDirection.SOUTH, TurningDirection.LEFT);
+        checkTurn(BotDirection.SOUTH, BotDirection.EAST, TurningDirection.LEFT);
+        checkTurn(BotDirection.EAST, BotDirection.NORTH, TurningDirection.LEFT);
     }
 
     @Test
-    public void moveRight() throws Exception {
+    public void turnRight_worksWith360DegreesMovement() throws Exception {
+        checkTurn(BotDirection.NORTH, BotDirection.EAST, TurningDirection.RIGHT);
+        checkTurn(BotDirection.EAST, BotDirection.SOUTH, TurningDirection.RIGHT);
+        checkTurn(BotDirection.SOUTH, BotDirection.WEST, TurningDirection.RIGHT);
+        checkTurn(BotDirection.WEST, BotDirection.NORTH, TurningDirection.RIGHT);
+    }
+
+    void checkTurn(BotDirection initialDirection, BotDirection expectedDirection, TurningDirection turningDirection) {
+        BotPositionModel initial = new BotPositionModel(0,0, initialDirection);
+        botMovementPresenter.place(initial);
+        botMovementPresenter.turnToDirection(turningDirection);
+        BotPositionModel expected = new BotPositionModel(0,0,expectedDirection);
+        assertEquals(String.format("Bot did not turn to direction: %s", turningDirection.name()), expected, botMovementPresenter.getCurrentPosition());
+
     }
 
     @Test

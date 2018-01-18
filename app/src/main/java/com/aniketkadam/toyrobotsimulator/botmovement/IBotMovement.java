@@ -1,6 +1,7 @@
 package com.aniketkadam.toyrobotsimulator.botmovement;
 
 import com.aniketkadam.toyrobotsimulator.botposition.BotPositionModel;
+import com.aniketkadam.toyrobotsimulator.botposition.TurningDirection;
 
 /**
  * Ways the bot can move.
@@ -9,8 +10,7 @@ import com.aniketkadam.toyrobotsimulator.botposition.BotPositionModel;
 public interface IBotMovement {
     boolean place(BotPositionModel movementModel);
     boolean moveForward();
-    void turnLeft();
-    void turnRight();
+    void turnToDirection(TurningDirection turningDirection);
 
     /**
      * Returns the current position of the bot if it is placed, or null otherwise. Such as at
