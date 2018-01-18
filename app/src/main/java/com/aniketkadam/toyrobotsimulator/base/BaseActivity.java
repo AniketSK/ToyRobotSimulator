@@ -19,9 +19,7 @@ public abstract class BaseActivity<T extends BasePresenter, V extends ActivityMa
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if ( presenter == null ) {
-            presenter = getPresenter();
-        }
+        presenter = getPresenter();
         binding = DataBindingUtil.setContentView(this, getLayoutRes());
     }
 
