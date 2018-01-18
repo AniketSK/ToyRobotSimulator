@@ -104,4 +104,13 @@ public class BotMovementPresenterTest {
         }
     }
 
+    @Test
+    public void reportPosition_remainsUnchangedAfterInvalidPlacePostions() throws Exception {
+        BotPositionModel validPosition = new BotPositionModel( movementGrid.getLbX(), movementGrid.getUbY(), BotDirection.SOUTH);
+        botMovementPresenter.place(validPosition);
+        BotPositionModel illegalPosition = new BotPositionModel( movementGrid.getLbX() - 1, movementGrid.getUbY() + 1, BotDirection.NORTH);
+        botMovementPresenter.place(illegalPosition);
+        assertEquals("Invalid position was reported", validPosition, botMovementPresenter.reportPosition());
+    }
+
 }
