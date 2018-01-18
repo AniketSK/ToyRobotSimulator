@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.aniketkadam.toyrobotsimulator.MainActivity">
     <data>
-        <variable name="presenter" type="com.aniketkadam.toyrobotsimulator.botmovement.BotMovementPresenter"/>
+        <import type="com.aniketkadam.toyrobotsimulator.botposition.TurningDirection"/>
+        <variable name="presenter" type="com.aniketkadam.toyrobotsimulator.botmovement.IBotMovement"/>
     </data>
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,6 +21,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="39dp"
             android:text="@string/place_label"
+            android:onClick="@{() -> presenter.placeClicked()}"
             app:layout_constraintEnd_toStartOf="@+id/textViewX"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -54,6 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="@string/buttonMove"
+            android:onClick="@{() -> presenter.moveForward()}"
             app:layout_constraintBaseline_toBaselineOf="@+id/buttonReport"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -63,6 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="@string/buttonLeft"
+            android:onClick="@{() -> presenter.turnToDirection(TurningDirection.LEFT)}"
             app:layout_constraintBaseline_toBaselineOf="@+id/buttonRight"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -72,6 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="97dp"
             android:layout_marginStart="23dp"
+            android:onClick="@{() -> presenter.turnToDirection(TurningDirection.RIGHT)}"
             android:text="@string/buttonRight"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/buttonLeft" />
@@ -82,6 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:text="@string/buttonReport"
+            android:onClick="@{() -> presenter.report()}"
             app:layout_constraintBottom_toTopOf="@+id/buttonRight"
             app:layout_constraintStart_toStartOf="@+id/buttonRight" />
 
