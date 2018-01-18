@@ -18,11 +18,14 @@ import org.jetbrains.annotations.NotNull;
 public final class BotMovementPresenter extends BasePresenter implements IBotMovement {
 
     private final MovementGrid movementGrid;
+    private final IBotView view;
     private BotPositionModel currentPositon;
 
-    public BotMovementPresenter(@NotNull MovementGrid movementGrid) {
-
+    public BotMovementPresenter(@NotNull MovementGrid movementGrid, IBotView view) {
         this.movementGrid = movementGrid;
+        this.view = view;
+    }
+
     }
 
     @Override
