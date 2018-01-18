@@ -1,6 +1,8 @@
 package com.aniketkadam.toyrobotsimulator.botmovement;
 
+import com.aniketkadam.toyrobotsimulator.botposition.BotDirection;
 import com.aniketkadam.toyrobotsimulator.botposition.BotPositionModel;
+import com.aniketkadam.toyrobotsimulator.movementgrid.MovementGrid;
 
 import org.junit.After;
 import org.junit.Before;
@@ -18,7 +20,8 @@ public class BotMovementPresenterTest {
 
     @Before
     public void setUp() throws Exception {
-
+        MovementGrid movementGrid = new MovementGrid(5,5);
+        botMovementPresenter = new BotMovementPresenter(movementGrid);
     }
 
     @After
