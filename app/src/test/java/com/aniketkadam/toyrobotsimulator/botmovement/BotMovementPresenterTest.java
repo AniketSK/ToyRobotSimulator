@@ -8,8 +8,9 @@ import com.aniketkadam.toyrobotsimulator.movementgrid.MovementGrid;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Behavioural test for bot movement.
@@ -18,11 +19,13 @@ public class BotMovementPresenterTest {
 
     private BotMovementPresenter botMovementPresenter;
     private MovementGrid movementGrid;
+    @Mock IBotView view;
+    @Mock IStringRespository stringRespository;
 
     @Before
     public void setUp() throws Exception {
         movementGrid = new MovementGrid(0, 0, 5, 5);
-        botMovementPresenter = new BotMovementPresenter(movementGrid);
+        botMovementPresenter = new BotMovementPresenter(movementGrid, view, stringRespository);
     }
 
     @After
