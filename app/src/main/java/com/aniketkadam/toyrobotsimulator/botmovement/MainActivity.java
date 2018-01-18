@@ -1,8 +1,9 @@
-package com.aniketkadam.toyrobotsimulator;
+package com.aniketkadam.toyrobotsimulator.botmovement;
 
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.aniketkadam.toyrobotsimulator.R;
 import com.aniketkadam.toyrobotsimulator.base.BaseActivity;
 import com.aniketkadam.toyrobotsimulator.botmovement.BotMovementPresenter;
 import com.aniketkadam.toyrobotsimulator.botmovement.IBotView;

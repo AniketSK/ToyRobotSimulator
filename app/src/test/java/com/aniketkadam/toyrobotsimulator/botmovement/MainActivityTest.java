@@ -1,4 +1,4 @@
-package com.aniketkadam.toyrobotsimulator;
+package com.aniketkadam.toyrobotsimulator.botmovement;
 
 import com.aniketkadam.toyrobotsimulator.botmovement.BotMovementPresenter;
 import com.aniketkadam.toyrobotsimulator.botmovement.IBotView;
