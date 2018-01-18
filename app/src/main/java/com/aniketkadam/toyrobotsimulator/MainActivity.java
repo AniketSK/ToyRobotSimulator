@@ -19,6 +19,7 @@ public class MainActivity extends BaseActivity<BotMovementPresenter, ActivityMai
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding.setPresenter(presenter);
     }
 
     @Override

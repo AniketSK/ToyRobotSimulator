@@ -13,13 +13,15 @@ import com.aniketkadam.toyrobotsimulator.databinding.ActivityMainBinding;
  */
 
 public abstract class BaseActivity<T extends BasePresenter, V extends ActivityMainBinding> extends AppCompatActivity {
-    T presenter;
-    V binding;
+    protected T presenter;
+    protected V binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        presenter = getPresenter();
+        if ( presenter == null ) {
+            presenter = getPresenter();
+        }
         binding = DataBindingUtil.setContentView(this, getLayoutRes());
     }
 
