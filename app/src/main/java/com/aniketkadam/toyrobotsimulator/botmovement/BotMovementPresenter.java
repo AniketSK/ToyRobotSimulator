@@ -1,5 +1,8 @@
 package com.aniketkadam.toyrobotsimulator.botmovement;
 
+import android.support.annotation.RestrictTo;
+
+import com.aniketkadam.toyrobotsimulator.botposition.BotDirection;
 import com.aniketkadam.toyrobotsimulator.botposition.BotPositionModel;
 import com.aniketkadam.toyrobotsimulator.movementgrid.MovementGrid;
 
@@ -30,7 +33,14 @@ public final class BotMovementPresenter implements IBotMovement {
 
     @Override
     public boolean moveForward() {
-        return false;
+        BotPositionModel expectedPositon = getUnvalidatedExpectedPositonAfterMove(currentPositon, currentPositon.getFacing());
+        if ( validatePlace(movementGrid, expectedPositon) )
+        {
+            currentPositon = expectedPositon;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -63,5 +73,44 @@ public final class BotMovementPresenter implements IBotMovement {
         } else {
             return true;
         }
+    }
+
+    /**
+     * * Note: Consider rewriting in kotlin so the changing of the attributes can be implemented in expectedPostion = currentPosition.copy(y = 2);
+     * @param currentPositon the position that the bot is currently in.
+     * @param directionToMove where it is facing currently and therefore the direction to move in.
+     * @return the new {BotPostionalModel}, moved to wherever it was supposed to. It is NOT guaranteed to be a valid position.
+     */
+    private BotPositionModel getUnvalidatedExpectedPositonAfterMove(BotPositionModel currentPositon, BotDirection directionToMove) {
+        BotPositionModel expectedPositon = currentPositon.clone();
+        // Move the current position to where it would be if the movement was executed.
+        switch (directionToMove) {
+
+            case NORTH:
+                expectedPositon.setY(currentPositon.getY() + 1);
+                break;
+
+            case SOUTH:
+                expectedPositon.setY(currentPositon.getY() - 1);
+                break;
+            case EAST:
+                expectedPositon.setX(currentPositon.getX() + 1);
+                break;
+            case WEST:
+                expectedPositon.setX(currentPositon.getX() - 1);
+                break;
+        }
+
+        return expectedPositon;
+    }
+
+    /**
+     * The current position should only be retrieved by tests to check if it is what was expected.
+     * There is no reason currently, to call this directly. Consider looking at the function reportPositon.
+     * @return the current position for testing if it's valid.
+     */
+    @RestrictTo(RestrictTo.Scope.TESTS)
+    BotPositionModel getCurrentPosition() {
+        return currentPositon;
     }
 }

@@ -65,7 +65,30 @@ public class BotMovementPresenterTest {
     }
 
     @Test
-    public void moveForward() throws Exception {
+    public void moveForward_worksForNorthValidPositions() throws Exception {
+        checkPositions(0, 0, 0, 1, BotDirection.NORTH);
+    }
+
+    @Test
+    public void moveForward_worksForSouth() throws Exception {
+        checkPositions(0, 1, 0, 0, BotDirection.SOUTH);
+    }
+
+    @Test
+    public void moveForward_worksForEastValidPositions() throws Exception {
+        checkPositions(0, 0, 1, 0, BotDirection.EAST);
+    }
+
+    @Test
+    public void moveForward_worksForWestValidPositions() throws Exception {
+        checkPositions(1, 0, 0, 0, BotDirection.WEST);
+    }
+
+    private void checkPositions(int initialX, int initialY, int expectedX, int expectedY, BotDirection initalDirection) {
+        botMovementPresenter.place(new BotPositionModel(initialX,initialY,initalDirection));
+        botMovementPresenter.moveForward();
+        BotPositionModel reportedPosition = botMovementPresenter.getCurrentPosition();
+        assertEquals(String.format("%s movement incorrect", initalDirection), new BotPositionModel(expectedX, expectedY, initalDirection), reportedPosition);
     }
 
     @Test
