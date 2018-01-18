@@ -1,9 +1,11 @@
 package com.aniketkadam.toyrobotsimulator.botmovement;
 
+import android.support.annotation.NonNull;
 import android.support.annotation.RestrictTo;
 
 import com.aniketkadam.toyrobotsimulator.botposition.BotDirection;
 import com.aniketkadam.toyrobotsimulator.botposition.BotPositionModel;
+import com.aniketkadam.toyrobotsimulator.botposition.TurningDirection;
 import com.aniketkadam.toyrobotsimulator.movementgrid.MovementGrid;
 
 import org.jetbrains.annotations.NotNull;
@@ -45,7 +47,30 @@ public final class BotMovementPresenter implements IBotMovement {
 
     @Override
     public boolean turnLeft() {
-        return false;
+        BotDirection newDirection = getNewPostion(currentPositon.getFacing(), TurningDirection.LEFT);
+        currentPositon.setFacing(newDirection);
+        return true;
+    }
+
+    private @NonNull BotDirection getNewPostion(@NonNull BotDirection facing, @NonNull TurningDirection directionToTurn) {
+        BotDirection newDirection = null;
+        switch (facing) {
+
+            case NORTH:
+                newDirection = (directionToTurn == TurningDirection.LEFT) ? BotDirection.WEST : BotDirection.EAST;
+                break;
+            case SOUTH:
+                newDirection = (directionToTurn == TurningDirection.LEFT) ? BotDirection.EAST : BotDirection.WEST;
+                break;
+            case EAST:
+                newDirection = (directionToTurn == TurningDirection.LEFT) ? BotDirection.NORTH : BotDirection.SOUTH;
+                break;
+            case WEST:
+                newDirection = (directionToTurn == TurningDirection.LEFT) ? BotDirection.SOUTH : BotDirection.NORTH;
+                break;
+        }
+
+        return newDirection;
     }
 
     @Override
