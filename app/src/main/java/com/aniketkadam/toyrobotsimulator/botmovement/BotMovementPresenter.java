@@ -10,6 +10,7 @@ import com.aniketkadam.toyrobotsimulator.movementgrid.MovementGrid;
 public final class BotMovementPresenter implements IBotMovement {
 
     private final MovementGrid movementGrid;
+    private BotPositionModel currentPositon;
 
     public BotMovementPresenter(MovementGrid movementGrid) {
 
@@ -18,7 +19,11 @@ public final class BotMovementPresenter implements IBotMovement {
 
     @Override
     public boolean place(BotPositionModel movementModel) {
-        return validatePlace(movementGrid, movementModel);
+        boolean result = validatePlace(movementGrid, movementModel);
+        if (result) {
+            currentPositon = movementModel;
+        }
+        return result;
     }
 
     @Override
@@ -38,7 +43,7 @@ public final class BotMovementPresenter implements IBotMovement {
 
     @Override
     public BotPositionModel reportPosition() {
-        return null;
+        return currentPositon;
     }
 
     /**
