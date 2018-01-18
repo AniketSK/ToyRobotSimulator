@@ -1,13 +1,40 @@
 package com.aniketkadam.toyrobotsimulator;
 
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import com.aniketkadam.toyrobotsimulator.base.BaseActivity;
+import com.aniketkadam.toyrobotsimulator.botmovement.BotMovementPresenter;
+import com.aniketkadam.toyrobotsimulator.botmovement.IBotView;
+import com.aniketkadam.toyrobotsimulator.movementgrid.MovementGrid;
+
+public class MainActivity extends BaseActivity<BotMovementPresenter, ViewDataBinding> implements IBotView {
+
+    private final int lowerBoundX = 0;
+    private final int getLowerBoundY = 0;
+    private final int upperBoundX = 5;
+    private final int upperBoundY = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    protected int getLayoutRes() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public BotMovementPresenter getPresenter() {
+        return new BotMovementPresenter(new MovementGrid(lowerBoundX, getLowerBoundY, upperBoundX, upperBoundY));
+    }
+
+    @Override
+    public void showReport(String report) {
+        Toast.makeText(this, report, Toast.LENGTH_LONG).show();
     }
 }
